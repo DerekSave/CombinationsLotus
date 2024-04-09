@@ -2,7 +2,7 @@
 #include <chrono>
 using namespace std::chrono;
 
-int cantidad = 0;
+int cantidad = 0; // Cantidad de jugadas
 
 // Función para imprimir una combinación
 void printCombination(int combination[], int k) {
