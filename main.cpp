@@ -2,6 +2,8 @@
 #include <chrono>
 using namespace std::chrono;
 
+int cantidad = 0;
+
 // Función para imprimir una combinación
 void printCombination(int combination[], int k) {
     for (int i = 0; i < k; ++i) {
@@ -12,7 +14,7 @@ void printCombination(int combination[], int k) {
 
 // Función para generar todas las combinaciones de 6 elementos de un conjunto de números del 0 al 49
 void generateCombinations() {
-    const int n = 49; // Total de elementos en el conjunto
+    const int n = 40; // Total de elementos en el conjunto
     const int k = 6;  // Número de elementos en cada combinación
 
     // Inicializar la primera combinación (0, 1, 2, 3, 4, 5)
@@ -23,6 +25,7 @@ void generateCombinations() {
 
     // Imprimir la primera combinación
     printCombination(combination, k);
+    cantidad++;
 
     // Generar las combinaciones restantes
     while (true) {
@@ -38,6 +41,7 @@ void generateCombinations() {
             combination[j] = combination[j - 1] + 1;
         }
         printCombination(combination, k);
+        cantidad++;
     }
 }
 
@@ -49,7 +53,7 @@ int main() {
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<seconds>(stop - start);
 
-    printf("Duracion: %ld\n", duration.count());
+    printf("Duracion: %ld segundos\nCantidad de permutaciones: %d\n", duration.count(), cantidad);
 
     return 0;
 }
