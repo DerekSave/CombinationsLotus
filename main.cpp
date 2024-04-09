@@ -12,16 +12,31 @@ void printCombination(const vector<int>& combination) {
 }
 
 // Función para generar todas las combinaciones de k elementos de un conjunto de n elementos
-void generateCombinations(vector<int>& combination, int start, int k, int n) {
-    if (k == 0) {
-        printCombination(combination);
-        return;
-    }
+void generateCombinations(int k, int n) {
+    vector<int> combination(k, 0);
 
-    for (int i = start; i <= n - k; ++i) {
-        combination.push_back(i);
-        generateCombinations(combination, i + 1, k - 1, n);
-        combination.pop_back();
+    while (true) {
+        // Imprimir la combinación actual
+        printCombination(combination);
+
+        // Encontrar el siguiente índice para cambiar
+        int i = k - 1;
+        while (i >= 0 && combination[i] == n - k + i) {
+            i--;
+        }
+
+        // Si no hay más combinaciones, terminar el bucle
+        if (i < 0) {
+            break;
+        }
+
+        // Incrementar el índice encontrado
+        combination[i]++;
+
+        // Actualizar los índices siguientes
+        for (int j = i + 1; j < k; ++j) {
+            combination[j] = combination[j - 1] + 1;
+        }
     }
 }
 
@@ -30,7 +45,7 @@ int main() {
     const int k = 6;  // Número de elementos en cada combinación
 
     vector<int> combination;
-    generateCombinations(combination, 0, k, n);
+    generateCombinations(k, n);
 
     return 0;
 }
