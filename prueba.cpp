@@ -7,9 +7,9 @@ void printCombination(int num1, int num2, int num3, int num4, int num5, int num6
     printf("%d %d %d %d %d %d\n", num1, num2, num3, num4, num5, num6);
 }
 
-// Función para generar todas las combinaciones de k elementos de un conjunto de n elementos
+// Función para generar todas las combinaciones de 6 elementos de un conjunto de 50 elementos
 void generateCombinations() {
-    for (int num1 = 0; num1 <= 44; ++num1) {
+    for (int num1 = 1; num1 <= 44; ++num1) {
         for (int num2 = num1 + 1; num2 <= 45; ++num2) {
             for (int num3 = num2 + 1; num3 <= 46; ++num3) {
                 for (int num4 = num3 + 1; num4 <= 47; ++num4) {
