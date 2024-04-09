@@ -1,21 +1,24 @@
-#include <iostream>
-
-using namespace std;
+#include <stdio.h>
+#include <chrono>
+using namespace std::chrono;
 
 // Función para imprimir una combinación
 void printCombination(int combination[], int k) {
     for (int i = 0; i < k; ++i) {
-        cout << combination[i] << " ";
+        printf("%d ", combination[i]);
     }
-    cout << endl;
+    printf("\n");
 }
 
-// Función para generar todas las combinaciones de k elementos de un conjunto de n elementos
-void generateCombinations(int n, int k) {
-    // Inicializar la primera combinación (0, 1, 2, ..., k - 1)
+// Función para generar todas las combinaciones de 6 elementos de un conjunto de números del 0 al 49
+void generateCombinations() {
+    const int n = 49; // Total de elementos en el conjunto
+    const int k = 6;  // Número de elementos en cada combinación
+
+    // Inicializar la primera combinación (0, 1, 2, 3, 4, 5)
     int combination[k];
     for (int i = 0; i < k; ++i) {
-        combination[i] = i;
+        combination[i] = i + 1;
     }
 
     // Imprimir la primera combinación
@@ -39,10 +42,14 @@ void generateCombinations(int n, int k) {
 }
 
 int main() {
-    const int n = 50; // Total de elementos en el conjunto
-    const int k = 6;  // Número de elementos en cada combinación
+    auto start = high_resolution_clock::now();
+    
+    generateCombinations();
+    
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<seconds>(stop - start);
 
-    generateCombinations(n, k);
+    printf("Duracion: %ld\n", duration.count());
 
     return 0;
 }
